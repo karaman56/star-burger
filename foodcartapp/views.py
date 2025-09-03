@@ -2,10 +2,11 @@ from django.http import JsonResponse
 from django.templatetags.static import static
 
 
-from .models import Product
+from .models import Product, Order, OrderItem
 
 
 def banners_list_api(request):
+    print("🟢 [API] Запрос баннеров")
     # FIXME move data to db?
     return JsonResponse([
         {
@@ -30,6 +31,7 @@ def banners_list_api(request):
 
 
 def product_list_api(request):
+    print("🟢 [API] Запрос списка продуктов")
     products = Product.objects.select_related('category').available()
 
     dumped_products = []
@@ -58,5 +60,49 @@ def product_list_api(request):
 
 
 def register_order(request):
-    # TODO это лишь заглушка
-    return JsonResponse({})
+    print("🟢 [API] Запрос регистрации заказа")
+
+    if request.method == 'POST':
+        import json
+        data = json.loads(request.body)
+
+        print("📦 НОВЫЙ ЗАКАЗ:")
+        print(f"• Имя: {data.get('firstname')}")
+        print(f"• Фамилия: {data.get('lastname')}")
+        print(f"• Телефон: {data.get('phonenumber')}")
+        print(f"• Адрес: {data.get('address')}")
+
+        # СОХРАНЯЕМ В БД
+        order = Order.objects.create(
+            firstname=data['firstname'],
+            lastname=data['lastname'],
+            phonenumber=data['phonenumber'],
+            address=data['address'],
+        )
+
+        print("• Продукты:")
+        for product_data in data.get('products', []):
+            # ИСПРАВЛЕНО: используем ключ 'product'
+            product_id = product_data.get('product')
+            quantity = product_data.get('quantity', 1)
+
+            if not product_id:
+                print(f"  ❌ Ошибка: нет ID продукта в данных: {product_data}")
+                continue
+
+            try:
+                product = Product.objects.get(id=product_id)
+                OrderItem.objects.create(
+                    order=order,
+                    product=product,
+                    quantity=quantity,
+                    price=product.price
+                )
+                print(f"  ✅ Продукт ID: {product_id}, Количество: {quantity}")
+            except Product.DoesNotExist:
+                print(f"  ❌ Продукт с ID {product_id} не найден в БД")
+            except Exception as e:
+                print(f"  ❌ Ошибка: {e}")
+
+        print(f"✅ Заказ #{order.id} сохранен в БД")
+        return JsonResponse({'order_id': order.id})
