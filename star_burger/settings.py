@@ -1,20 +1,17 @@
 import os
-
 import dj_database_url
-
 from environs import Env
 
 
 env = Env()
 env.read_env()
 
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
-
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', ['127.0.0.1', 'localhost'])
 
 INSTALLED_APPS = [
@@ -27,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'phonenumber_field',
+    'rest_framework',
     'debug_toolbar',
 ]
 

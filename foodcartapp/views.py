@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.templatetags.static import static
-
+from rest_framework.decorators import api_view
 
 from .models import Product, Order, OrderItem
 
@@ -58,7 +58,7 @@ def product_list_api(request):
         'indent': 4,
     })
 
-
+@api_view(['POST'])
 def register_order(request):
     print("🟢 [API] Запрос регистрации заказа")
 
@@ -106,3 +106,6 @@ def register_order(request):
 
         print(f"✅ Заказ #{order.id} сохранен в БД")
         return JsonResponse({'order_id': order.id})
+
+
+    return JsonResponse({'error': 'Use POST method'}, status=400)
