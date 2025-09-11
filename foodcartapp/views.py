@@ -58,54 +58,106 @@ def product_list_api(request):
         'indent': 4,
     })
 
+
 @api_view(['POST'])
 def register_order(request):
     print("🟢 [API] Запрос регистрации заказа")
 
     if request.method == 'POST':
-        import json
-        data = json.loads(request.body)
+        try:
+            data = request.data
 
-        print("📦 НОВЫЙ ЗАКАЗ:")
-        print(f"• Имя: {data.get('firstname')}")
-        print(f"• Фамилия: {data.get('lastname')}")
-        print(f"• Телефон: {data.get('phonenumber')}")
-        print(f"• Адрес: {data.get('address')}")
+            print("📦 НОВЫЙ ЗАКАЗ:")
+            import json
+            print(json.dumps(data, ensure_ascii=False, indent=2))
 
-        # СОХРАНЯЕМ В БД
-        order = Order.objects.create(
-            firstname=data['firstname'],
-            lastname=data['lastname'],
-            phonenumber=data['phonenumber'],
-            address=data['address'],
-        )
+            # СОХРАНЯЕМ В БД
+            order = Order.objects.create(
+                firstname=data['firstname'],
+                lastname=data['lastname'],
+                phonenumber=data['phonenumber'],
+                address=data['address'],
+            )
 
-        print("• Продукты:")
-        for product_data in data.get('products', []):
-            # ИСПРАВЛЕНО: используем ключ 'product'
-            product_id = product_data.get('product')
-            quantity = product_data.get('quantity', 1)
+            print("• Продукты:")
+            missing_products = []  # Список отсутствующих продуктов
+            valid_products = []  # Список успешно добавленных продуктов
 
-            if not product_id:
-                print(f"  ❌ Ошибка: нет ID продукта в данных: {product_data}")
-                continue
+            for product_data in data.get('products', []):
+                if isinstance(product_data, dict):
+                    product_id = product_data.get('product')
+                    quantity = product_data.get('quantity', 1)
+                elif isinstance(product_data, str):
+                    try:
+                        if ':' in product_data:
+                            product_id, quantity = product_data.split(':', 1)
+                        else:
+                            product_id = product_data
+                            quantity = 1
+                        product_id = int(product_id.strip())
+                        quantity = int(quantity.strip()) if quantity else 1
+                    except (ValueError, AttributeError):
+                        print(f"  ❌ Ошибка парсинга строки: {product_data}")
+                        continue
+                else:
+                    continue
 
-            try:
-                product = Product.objects.get(id=product_id)
-                OrderItem.objects.create(
-                    order=order,
-                    product=product,
-                    quantity=quantity,
-                    price=product.price
-                )
-                print(f"  ✅ Продукт ID: {product_id}, Количество: {quantity}")
-            except Product.DoesNotExist:
-                print(f"  ❌ Продукт с ID {product_id} не найден в БД")
-            except Exception as e:
-                print(f"  ❌ Ошибка: {e}")
+                if not product_id:
+                    continue
 
-        print(f"✅ Заказ #{order.id} сохранен в БД")
-        return JsonResponse({'order_id': order.id})
+                try:
+                    product = Product.objects.get(id=product_id)
+                    OrderItem.objects.create(
+                        order=order,
+                        product=product,
+                        quantity=quantity,
+                        price=product.price
+                    )
+                    valid_products.append({
+                        'id': product_id,
+                        'name': product.name,
+                        'quantity': quantity
+                    })
+                    print(f"  ✅ Продукт ID: {product_id}, Количество: {quantity}")
+                except Product.DoesNotExist:
+                    error_msg = f"Продукт с ID {product_id} не найден в базе данных"
+                    missing_products.append({
+                        'product_id': product_id,
+                        'error': error_msg
+                    })
+                    print(f"  ❌ {error_msg}")
+                except Exception as e:
+                    error_msg = f"Ошибка обработки продукта {product_id}: {str(e)}"
+                    missing_products.append({
+                        'product_id': product_id,
+                        'error': error_msg
+                    })
+                    print(f"  ❌ {error_msg}")
 
+            print(f"✅ Заказ #{order.id} сохранен в БД")
+
+            # Возвращаем ответ с информацией об ошибках
+            response_data = {
+                'order_id': order.id,
+                'status': 'success',
+                'message': 'Заказ создан',
+                'added_products': valid_products,
+            }
+
+            if missing_products:
+                response_data['status'] = 'partial_success'
+                response_data['message'] = 'Заказ создан, но некоторые продукты отсутствуют'
+                response_data['missing_products'] = missing_products
+                return JsonResponse(response_data, status=207)  # Multi-Status
+
+            return JsonResponse(response_data)
+
+        except Exception as e:
+            print(f"❌ КРИТИЧЕСКАЯ ОШИБКА: {e}")
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Внутренняя ошибка сервера',
+                'error': str(e)
+            }, status=500)
 
     return JsonResponse({'error': 'Use POST method'}, status=400)
