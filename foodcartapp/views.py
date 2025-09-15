@@ -89,10 +89,29 @@ def register_order(request):
             order = serializer.save()
             print(f"✅ Заказ #{order.id} создан")
 
+            # Получаем информацию о продуктах
+            order_items = order.items.all()
+            products_info = []
+            for item in order_items:
+                products_info.append({
+                    'product_id': item.product.id,
+                    'product_name': item.product.name,
+                    'quantity': item.quantity,
+                    'price': str(item.price)
+                })
+
             return Response({
                 'order_id': order.id,
                 'status': 'success',
-                'message': 'Заказ успешно создан'
+                'message': 'Заказ успешно создан',
+                'customer': {
+                    'firstname': order.firstname,
+                    'lastname': order.lastname,
+                    'phonenumber': str(order.phonenumber),
+                    'address': order.address
+                },
+                'products': products_info,
+                'order_total': str(sum(item.price * item.quantity for item in order_items))
             })
 
         # АВТОМАТИЧЕСКАЯ ОБРАБОТКА ОШИБОК
