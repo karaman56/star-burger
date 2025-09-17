@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.views import View
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import user_passes_test
-
+from foodcartapp.models import Order, OrderItem
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import views as auth_views
 
@@ -92,6 +92,31 @@ def view_restaurants(request):
 
 @user_passes_test(is_manager, login_url='restaurateur:login')
 def view_orders(request):
+
+    orders = Order.objects.filter(status='new').prefetch_related('items__product')
+
+    orders_data = []
+    for order in orders:
+        order_info = {
+            'id': order.id,
+            'firstname': order.firstname,
+            'lastname': order.lastname,
+            'phonenumber': order.phonenumber,
+            'address': order.address,
+            'status': order.get_status_display(),
+            'comment': order.comment or '-',
+            'products': [],
+            'total_amount': 0
+        }
+
+        # Собираем информацию о продуктах и считаем общую сумму
+        for item in order.items.all():
+            product_info = f"{item.product.name} x{item.quantity}"
+            order_info['products'].append(product_info)
+            order_info['total_amount'] += item.price * item.quantity
+
+        orders_data.append(order_info)
+
     return render(request, template_name='order_items.html', context={
-        # TODO заглушка для нереализованного функционала
+        'orders': orders_data
     })
