@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.shortcuts import reverse
 from django.templatetags.static import static
 from django.utils.html import format_html
+from django.core.exceptions import ValidationError
 
 from .models import Product, Order, OrderItem
 from .models import ProductCategory
@@ -46,8 +47,6 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
     ]
     search_fields = [
-        # FIXME SQLite can not convert letter case for cyrillic words properly, so search will be buggy.
-        # Migration to PostgreSQL is necessary
         'name',
         'category__name',
     ]
@@ -105,6 +104,7 @@ class OrderItemInline(admin.TabularInline):
     model = OrderItem
     extra = 0
 
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = [
@@ -115,7 +115,15 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ['firstname', 'lastname', 'phonenumber', 'address']
     inlines = [OrderItemInline]
 
+    def save_formset(self, request, form, formset, change):
+        """Валидация OrderItem при сохранении в админке"""
+        instances = formset.save(commit=False)
+        for instance in instances:
 
-@admin.register(OrderItem)
-class OrderItemAdmin(admin.ModelAdmin):
-    list_display = ['order', 'product', 'quantity', 'price']
+            if not instance.price or instance.price == 0:
+                instance.price = instance.product.price
+
+            if instance.price < 0:
+                raise ValidationError('Цена не может быть отрицательной')
+            instance.save()
+        formset.save_m2m()

@@ -10,7 +10,7 @@ from .models import Product, Order, OrderItem, Restaurant
 
 def banners_list_api(request):
     print("🟢 [API] Запрос баннеров")
-    # FIXME move data to db?
+
     return JsonResponse([
         {
             'title': 'Burger',
@@ -66,11 +66,11 @@ def product_list_api(request):
 def register_order(request):
 
     if request.method == 'GET':
-        # Проверка базы данных (оставляем как было)
+
         errors = []
         products_count = Product.objects.count()
         restaurants_count = Restaurant.objects.count()
-        # ... остальная проверка ...
+
 
         if errors:
             return Response({'errors': errors}, status=status.HTTP_400_BAD_REQUEST)
@@ -114,7 +114,7 @@ def register_order(request):
                 'order_total': str(sum(item.price * item.quantity for item in order_items))
             })
 
-        # АВТОМАТИЧЕСКАЯ ОБРАБОТКА ОШИБОК
+
         print(f"❌ Ошибки валидации: {serializer.errors}")
         return Response({
             'status': 'error',

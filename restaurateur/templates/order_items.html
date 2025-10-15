@@ -18,9 +18,9 @@
       <th>Клиент</th>
       <th>Телефон</th>
       <th>Адрес доставки</th>
-      <th>Сумма</th>
+      <th>Сумма заказа</th>
       <th>Комментарий</th>
-      <th>Продукты</th>
+      <th>Состав заказа</th>
     </tr>
 
     {% for order in orders %}
@@ -30,7 +30,7 @@
         <td>{{ order.firstname }} {{ order.lastname }}</td>
         <td>{{ order.phonenumber }}</td>
         <td>{{ order.address }}</td>
-        <td>{{ order.total_amount }} руб.</td>
+        <td><strong>{{ order.total_amount }} руб.</strong></td>
         <td>{{ order.comment }}</td>
         <td>
           <ul>

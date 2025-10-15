@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+from django.core.exceptions import ValidationError
 from phonenumber_field.modelfields import PhoneNumberField
 
 
@@ -204,7 +205,8 @@ class OrderItem(models.Model):
         'цена',
         max_digits=8,
         decimal_places=2,
-        validators=[MinValueValidator(0)]
+        validators=[MinValueValidator(0)],
+        default=0
     )
 
     class Meta:
@@ -213,3 +215,8 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.product.name} x{self.quantity}"
+
+    def clean(self):
+        """Валидация на уровне модели"""
+        if self.price < 0:
+            raise ValidationError({'price': 'Цена не может быть отрицательной'})
