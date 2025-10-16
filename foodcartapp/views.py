@@ -1,3 +1,5 @@
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 from django.http import JsonResponse
 from django.templatetags.static import static
 from rest_framework.decorators import api_view
@@ -62,6 +64,7 @@ def product_list_api(request):
     })
 
 
+@csrf_exempt
 @api_view(['GET', 'POST'])
 def register_order(request):
 
@@ -89,7 +92,6 @@ def register_order(request):
             order = serializer.save()
             print(f"✅ Заказ #{order.id} создан")
 
-            # Получаем информацию о продуктах
             order_items = order.items.all()
             products_info = []
             for item in order_items:
