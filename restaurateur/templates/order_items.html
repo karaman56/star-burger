@@ -21,6 +21,7 @@
       <th>Сумма заказа</th>
       <th>Комментарий</th>
       <th>Состав заказа</th>
+      <th>Редактировать</th>
     </tr>
 
     {% for order in orders %}
@@ -38,6 +39,10 @@
               <li>{{ product }}</li>
             {% endfor %}
           </ul>
+        </td>
+        <a href="{% url 'admin:foodcartapp_order_change' order.id %}">
+            Редактировать
+          </a>
         </td>
       </tr>
     {% empty %}
