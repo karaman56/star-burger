@@ -20,19 +20,34 @@
       <th>Адрес доставки</th>
       <th>Сумма заказа</th>
       <th>Комментарий</th>
+      <th>Комментарий менеджера</th>
       <th>Состав заказа</th>
       <th>Редактировать</th>
     </tr>
 
     {% for order in orders %}
-      <tr>
+       <tr>
         <td>{{ order.id }}</td>
-        <td>{{ order.status }}</td>
+        <td>
+          <!-- ОТОБРАЖАЕМ СТАТУС С ИКОНКАМИ ИЛИ ЦВЕТОМ -->
+          {% if order.status == 'Новый' %}
+            <span class="label label-primary">{{ order.status }}</span>
+          {% elif order.status == 'В обработке' %}
+            <span class="label label-warning">{{ order.status }}</span>
+          {% elif order.status == 'Завершен' %}
+            <span class="label label-success">{{ order.status }}</span>
+          {% elif order.status == 'Отменен' %}
+            <span class="label label-danger">{{ order.status }}</span>
+          {% else %}
+            <span class="label label-default">{{ order.status }}</span>
+          {% endif %}
+        </td>
         <td>{{ order.firstname }} {{ order.lastname }}</td>
         <td>{{ order.phonenumber }}</td>
         <td>{{ order.address }}</td>
         <td><strong>{{ order.total_amount }} руб.</strong></td>
         <td>{{ order.comment }}</td>
+        <td>{{ order.manager_comment|default:"-" }}</td>
         <td>
           <ul>
             {% for product in order.products %}
@@ -47,7 +62,7 @@
       </tr>
     {% empty %}
       <tr>
-        <td colspan="8" class="text-center">Нет необработанных заказов</td>
+        <td colspan="10" class="text-center">Нет необработанных заказов</td>
       </tr>
     {% endfor %}
    </table>

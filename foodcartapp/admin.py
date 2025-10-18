@@ -116,6 +116,27 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ['status', 'created_at']
     search_fields = ['firstname', 'lastname', 'phonenumber', 'address']
     inlines = [OrderItemInline]
+    fieldsets = (
+        ('Информация о клиенте', {
+            'fields': [
+                'firstname', 'lastname', 'phonenumber', 'address'
+            ]
+        }),
+        ('Статус и даты', {
+            'fields': [
+                'status', 'created_at', 'called_at', 'delivered_at'
+            ]
+        }),
+        ('Комментарии', {
+            'fields': [
+                'comment',
+                'manager_comment',
+            ],
+            'classes': ['wide']
+        }),
+    )
+
+    readonly_fields = ['created_at']
 
     def response_change(self, request, obj):
         """Переопределяем поведение после сохранения заказа"""

@@ -175,6 +175,10 @@ class Order(models.Model):
         'комментарий',
         blank=True
     )
+    manager_comment = models.TextField(
+        'комментарий менеджера',
+        blank=True
+    )
 
     class Meta:
         verbose_name = 'заказ'
