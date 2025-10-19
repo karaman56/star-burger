@@ -111,9 +111,9 @@ class OrderItemInline(admin.TabularInline):
 class OrderAdmin(admin.ModelAdmin):
     list_display = [
         'id', 'firstname', 'lastname', 'phonenumber',
-        'address', 'status', 'created_at'
+        'address', 'status', 'created_at', 'delivered_at'
     ]
-    list_filter = ['status', 'created_at']
+    list_filter = ['status', 'created_at', 'delivered_at' ]
     search_fields = ['firstname', 'lastname', 'phonenumber', 'address']
     inlines = [OrderItemInline]
     fieldsets = (

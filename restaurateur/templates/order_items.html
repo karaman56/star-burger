@@ -18,6 +18,9 @@
       <th>Клиент</th>
       <th>Телефон</th>
       <th>Адрес доставки</th>
+      <th>Создан</th>
+      <th>Позвонили</th>
+      <th>Доставлен</th>
       <th>Сумма заказа</th>
       <th>Комментарий</th>
       <th>Комментарий менеджера</th>
@@ -29,7 +32,7 @@
        <tr>
         <td>{{ order.id }}</td>
         <td>
-          <!-- ОТОБРАЖАЕМ СТАТУС С ИКОНКАМИ ИЛИ ЦВЕТОМ -->
+
           {% if order.status == 'Новый' %}
             <span class="label label-primary">{{ order.status }}</span>
           {% elif order.status == 'В обработке' %}
@@ -45,6 +48,9 @@
         <td>{{ order.firstname }} {{ order.lastname }}</td>
         <td>{{ order.phonenumber }}</td>
         <td>{{ order.address }}</td>
+         <td>{{ order.created_at|date:"d.m.Y H:i" }}</td>
+        <td>{{ order.called_at|date:"d.m.Y H:i"|default:"-" }}</td>
+        <td>{{ order.delivered_at|date:"d.m.Y H:i"|default:"-" }}</td>
         <td><strong>{{ order.total_amount }} руб.</strong></td>
         <td>{{ order.comment }}</td>
         <td>{{ order.manager_comment|default:"-" }}</td>
@@ -62,7 +68,7 @@
       </tr>
     {% empty %}
       <tr>
-        <td colspan="10" class="text-center">Нет необработанных заказов</td>
+        <td colspan="13" class="text-center">Нет необработанных заказов</td>
       </tr>
     {% endfor %}
    </table>
