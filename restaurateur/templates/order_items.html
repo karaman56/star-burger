@@ -9,6 +9,21 @@
 
   <hr/>
   <br/>
+  <style>
+    .comment-column {
+      max-width: 120px;
+      word-wrap: break-word;
+    }
+    .distance-info {
+      font-size: 12px;
+      color: #666;
+      margin-top: 2px;
+    }
+    .no-restaurants {
+      color: #dc3545;
+      font-weight: bold;
+    }
+  </style>
 
   <div class="container">
    <table class="table table-responsive">
@@ -18,21 +33,22 @@
       <th>Клиент</th>
       <th>Телефон</th>
       <th>Адрес доставки</th>
+      <th>Рестораны</th>
+      <th>Способ оплаты</th>
       <th>Создан</th>
       <th>Позвонили</th>
       <th>Доставлен</th>
       <th>Сумма заказа</th>
-      <th>Комментарий</th>
-      <th>Комментарий менеджера</th>
+      <th class="comment-column">Комментарий клиента</th>
+      <th class="comment-column">Комментарий менеджера</th>
       <th>Состав заказа</th>
       <th>Редактировать</th>
     </tr>
 
     {% for order in orders %}
-       <tr>
+      <tr>
         <td>{{ order.id }}</td>
         <td>
-
           {% if order.status == 'Новый' %}
             <span class="label label-primary">{{ order.status }}</span>
           {% elif order.status == 'В обработке' %}
@@ -48,11 +64,52 @@
         <td>{{ order.firstname }} {{ order.lastname }}</td>
         <td>{{ order.phonenumber }}</td>
         <td>{{ order.address }}</td>
-         <td>{{ order.created_at|date:"d.m.Y H:i" }}</td>
+        <td>
+          {% if order.cooking_restaurant %}
+            <!-- Если ресторан выбран -->
+            <div class="selected-restaurant">
+              ✅ {{ order.cooking_restaurant.name }}
+            </div>
+          {% else %}
+            {% if order.available_restaurants %}
+              <div class="restaurant-info">
+                <strong>Могут приготовить:</strong>
+                {% for restaurant_info in order.available_restaurants %}
+                  <div class="available-restaurant">
+                    • {{ restaurant_info.restaurant.name }}
+                    {% if restaurant_info.distance is not None %}
+                      <div class="distance-info">
+                        📍 ~{{ restaurant_info.distance|floatformat:2 }} км
+                      </div>
+                    {% else %}
+                      <div class="distance-info">
+                        📍 расстояние не известно
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              </div>
+            {% else %}
+              <div class="no-restaurants">
+                ❌ Нет подходящих ресторанов
+              </div>
+            {% endif %}
+          {% endif %}
+        </td>
+        <td>
+          {% if order.payment_method == 'Наличными' %}
+            <span class="label label-info">💵 {{ order.payment_method }}</span>
+          {% elif order.payment_method == 'Электронно' %}
+            <span class="label label-success">💳 {{ order.payment_method }}</span>
+          {% else %}
+            <span class="label label-default">{{ order.payment_method }}</span>
+          {% endif %}
+        </td>
+        <td>{{ order.created_at|date:"d.m.Y H:i" }}</td>
         <td>{{ order.called_at|date:"d.m.Y H:i"|default:"-" }}</td>
         <td>{{ order.delivered_at|date:"d.m.Y H:i"|default:"-" }}</td>
         <td><strong>{{ order.total_amount }} руб.</strong></td>
-        <td>{{ order.comment }}</td>
+        <td>{{ order.comment|default:"-" }}</td>
         <td>{{ order.manager_comment|default:"-" }}</td>
         <td>
           <ul>
@@ -61,14 +118,15 @@
             {% endfor %}
           </ul>
         </td>
-        <a href="{% url 'admin:foodcartapp_order_change' order.id %}?next={{ request.path|urlencode }}">
+        <td>
+          <a href="{% url 'admin:foodcartapp_order_change' order.id %}?next={{ request.path|urlencode }}">
             Редактировать
           </a>
         </td>
       </tr>
     {% empty %}
       <tr>
-        <td colspan="13" class="text-center">Нет необработанных заказов</td>
+        <td colspan="15" class="text-center">Нет необработанных заказов</td>
       </tr>
     {% endfor %}
    </table>

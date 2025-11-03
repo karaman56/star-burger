@@ -111,9 +111,9 @@ class OrderItemInline(admin.TabularInline):
 class OrderAdmin(admin.ModelAdmin):
     list_display = [
         'id', 'firstname', 'lastname', 'phonenumber',
-        'address', 'status', 'created_at', 'delivered_at'
+        'address', 'status', 'payment_method', 'created_at', 'delivered_at'
     ]
-    list_filter = ['status', 'created_at', 'delivered_at' ]
+    list_filter = ['status', 'payment_method', 'created_at', 'delivered_at' ]
     search_fields = ['firstname', 'lastname', 'phonenumber', 'address']
     inlines = [OrderItemInline]
     fieldsets = (
@@ -122,9 +122,14 @@ class OrderAdmin(admin.ModelAdmin):
                 'firstname', 'lastname', 'phonenumber', 'address'
             ]
         }),
-        ('Статус и даты', {
+        ('Ресторан', {
             'fields': [
-                'status', 'created_at', 'called_at', 'delivered_at'
+                'cooking_restaurant',
+            ]
+        }),
+        ('Статус и оплата', {
+            'fields': [
+                'status', 'payment_method', 'created_at', 'called_at', 'delivered_at'
             ]
         }),
         ('Комментарии', {

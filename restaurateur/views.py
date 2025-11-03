@@ -3,12 +3,12 @@ from django.shortcuts import redirect, render
 from django.views import View
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import user_passes_test
-from foodcartapp.models import Order, OrderItem
+from django.db.models import Prefetch, Count
+from foodcartapp.models import Order, OrderItem, Product, Restaurant
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import views as auth_views
-
-
-from foodcartapp.models import Product, Restaurant
+from restaurateur.geocoder import fetch_coordinates
+from django.conf import settings
 
 
 class Login(forms.Form):
@@ -45,7 +45,7 @@ class LoginView(View):
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)
-                if user.is_staff:  # FIXME replace with specific permission
+                if user.is_staff:
                     return redirect("restaurateur:RestaurantView")
                 return redirect("start_page")
 
@@ -60,7 +60,7 @@ class LogoutView(auth_views.LogoutView):
 
 
 def is_manager(user):
-    return user.is_staff  # FIXME replace with specific permission
+    return user.is_staff
 
 
 @user_passes_test(is_manager, login_url='restaurateur:login')
@@ -90,10 +90,48 @@ def view_restaurants(request):
     })
 
 
+def update_coordinates_for_orders(orders):
+    """Обновляет координаты для заказов, у которых их нет"""
+    for order in orders:
+        if not order.latitude or not order.longitude:
+            coords = fetch_coordinates(settings.YANDEX_GEOCODER_APIKEY, order.address)
+            if coords:
+                order.longitude, order.latitude = coords
+                order.save(update_fields=['longitude', 'latitude'])
+
+
+def update_coordinates_for_restaurants(restaurants):
+    """Обновляет координаты для ресторанов, у которых их нет"""
+    for restaurant in restaurants:
+        if not restaurant.latitude or not restaurant.longitude:
+            coords = fetch_coordinates(settings.YANDEX_GEOCODER_APIKEY, restaurant.address)
+            if coords:
+                restaurant.longitude, restaurant.latitude = coords
+                restaurant.save(update_fields=['longitude', 'latitude'])
+
+
 @user_passes_test(is_manager, login_url='restaurateur:login')
 def view_orders(request):
 
-    orders = Order.objects.filter(status='new').prefetch_related('items__product')
+    orders = Order.objects.exclude(
+        status__in=['completed', 'canceled']
+    ).prefetch_related(
+        Prefetch(
+            'items',
+            queryset=OrderItem.objects.select_related('product')
+        )
+    ).order_by('-created_at')
+
+    # Получаем все рестораны для обновления координат
+    all_restaurants = Restaurant.objects.all()
+
+    # Обновляем координаты для заказов и ресторанов
+    try:
+        update_coordinates_for_orders(orders)
+        update_coordinates_for_restaurants(all_restaurants)
+    except Exception as e:
+
+        print(f"Ошибка геокодера: {e}")
 
     orders_data = []
     for order in orders:
@@ -104,18 +142,27 @@ def view_orders(request):
             'phonenumber': order.phonenumber,
             'address': order.address,
             'status': order.get_status_display(),
+            'payment_method': order.get_payment_method_display(),
             'comment': order.comment or '-',
+            'manager_comment': order.manager_comment or '-',
+            'created_at': order.created_at,
+            'called_at': order.called_at,
+            'delivered_at': order.delivered_at,
             'products': [],
-            'total_amount': 0
+            'total_amount': 0,
+            'cooking_restaurant': order.cooking_restaurant,
+            'available_restaurants': order.get_available_restaurants() if not order.cooking_restaurant else []
         }
 
-        # Собираем информацию о продуктах и считаем общую сумму
         for item in order.items.all():
             product_info = f"{item.product.name} x{item.quantity}"
             order_info['products'].append(product_info)
             order_info['total_amount'] += item.price * item.quantity
 
         orders_data.append(order_info)
+
+
+    orders_data.sort(key=lambda x: (x['cooking_restaurant'] is not None, x['created_at']))
 
     return render(request, template_name='order_items.html', context={
         'orders': orders_data
