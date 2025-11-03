@@ -7,8 +7,7 @@ from django.db.models import Prefetch, Count
 from foodcartapp.models import Order, OrderItem, Product, Restaurant
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import views as auth_views
-from restaurateur.geocoder import fetch_coordinates
-from django.conf import settings
+from locations.utils import get_or_create_location, batch_update_locations
 
 
 class Login(forms.Form):
@@ -90,29 +89,9 @@ def view_restaurants(request):
     })
 
 
-def update_coordinates_for_orders(orders):
-    """Обновляет координаты для заказов, у которых их нет"""
-    for order in orders:
-        if not order.latitude or not order.longitude:
-            coords = fetch_coordinates(settings.YANDEX_GEOCODER_APIKEY, order.address)
-            if coords:
-                order.longitude, order.latitude = coords
-                order.save(update_fields=['longitude', 'latitude'])
-
-
-def update_coordinates_for_restaurants(restaurants):
-    """Обновляет координаты для ресторанов, у которых их нет"""
-    for restaurant in restaurants:
-        if not restaurant.latitude or not restaurant.longitude:
-            coords = fetch_coordinates(settings.YANDEX_GEOCODER_APIKEY, restaurant.address)
-            if coords:
-                restaurant.longitude, restaurant.latitude = coords
-                restaurant.save(update_fields=['longitude', 'latitude'])
-
-
 @user_passes_test(is_manager, login_url='restaurateur:login')
 def view_orders(request):
-
+    # Оптимизированный запрос с prefetch_related
     orders = Order.objects.exclude(
         status__in=['completed', 'canceled']
     ).prefetch_related(
@@ -122,16 +101,15 @@ def view_orders(request):
         )
     ).order_by('-created_at')
 
-    # Получаем все рестораны для обновления координат
-    all_restaurants = Restaurant.objects.all()
+    order_addresses = set(orders.values_list('address', flat=True))
+    restaurant_addresses = set(Restaurant.objects.values_list('address', flat=True))
+    all_addresses = order_addresses.union(restaurant_addresses)
 
-    # Обновляем координаты для заказов и ресторанов
     try:
-        update_coordinates_for_orders(orders)
-        update_coordinates_for_restaurants(all_restaurants)
+        batch_update_locations(all_addresses)
     except Exception as e:
 
-        print(f"Ошибка геокодера: {e}")
+        print(f"Ошибка пакетного геокодирования: {e}")
 
     orders_data = []
     for order in orders:
@@ -160,9 +138,6 @@ def view_orders(request):
             order_info['total_amount'] += item.price * item.quantity
 
         orders_data.append(order_info)
-
-
-    orders_data.sort(key=lambda x: (x['cooking_restaurant'] is not None, x['created_at']))
 
     return render(request, template_name='order_items.html', context={
         'orders': orders_data

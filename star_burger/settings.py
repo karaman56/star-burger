@@ -17,6 +17,7 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', ['127.0.0.1', 'localhost'])
 INSTALLED_APPS = [
     'foodcartapp.apps.FoodcartappConfig',
     'restaurateur.apps.RestaurateurConfig',
+    'locations.apps.LocationsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,4 +123,4 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "bundles"),
 ]
 
-YANDEX_GEOCODER_APIKEY = env('YANDEX_GEOCODER_APIKEY', '0b77519b-66c0-4aa9-923e-827e4512b95e')
+YANDEX_GEOCODER_APIKEY = env('YANDEX_GEOCODER_APIKEY')

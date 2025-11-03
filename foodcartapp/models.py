@@ -21,16 +21,7 @@ class Restaurant(models.Model):
         max_length=50,
         blank=True,
     )
-    latitude = models.FloatField(
-        'Широта',
-        blank=True,
-        null=True
-    )
-    longitude = models.FloatField(
-        'Долгота',
-        blank=True,
-        null=True
-    )
+
 
     class Meta:
         verbose_name = 'ресторан'
@@ -40,9 +31,14 @@ class Restaurant(models.Model):
         return self.name
 
     def get_coordinates(self):
-        """Возвращает координаты ресторана"""
-        if self.latitude and self.longitude:
-            return (self.latitude, self.longitude)
+        """Возвращает координаты ресторана через Location"""
+        from locations.models import Location
+        try:
+            location = Location.objects.get(address=self.address)
+            if location.latitude and location.longitude:
+                return (location.latitude, location.longitude)
+        except Location.DoesNotExist:
+            pass
         return None
 
 
@@ -256,16 +252,8 @@ class Order(models.Model):
         'комментарий менеджера',
         blank=True
     )
-    latitude = models.FloatField(
-        'Широта',
-        blank=True,
-        null=True
-    )
-    longitude = models.FloatField(
-        'Долгота',
-        blank=True,
-        null=True
-    )
+
+    # Убираем координаты - будем использовать Location
 
     class Meta:
         verbose_name = 'заказ'
@@ -276,9 +264,14 @@ class Order(models.Model):
         return f"Заказ #{self.id} - {self.firstname} {self.lastname}"
 
     def get_coordinates(self):
-        """Возвращает координаты заказа"""
-        if self.latitude and self.longitude:
-            return (self.latitude, self.longitude)
+        """Возвращает координаты заказа через Location"""
+        from locations.models import Location
+        try:
+            location = Location.objects.get(address=self.address)
+            if location.latitude and location.longitude:
+                return (location.latitude, location.longitude)
+        except Location.DoesNotExist:
+            pass
         return None
 
     def calculate_distance_to_restaurant(self, restaurant):
@@ -298,7 +291,6 @@ class Order(models.Model):
         """Определяет какие рестораны могут приготовить весь заказ с расстояниями"""
         from django.db.models import Count
 
-        """Получаем все продукты в заказе"""
         order_products = self.items.values_list('product', flat=True)
 
         if not order_products:
@@ -313,7 +305,6 @@ class Order(models.Model):
             matching_products=len(order_products)
         ).distinct()
 
-        """Добавляем расстояние до каждого ресторана"""
         restaurants_with_distance = []
         for restaurant in available_restaurants:
             dist = self.calculate_distance_to_restaurant(restaurant)
@@ -322,7 +313,7 @@ class Order(models.Model):
                 'distance': dist
             })
 
-        """Сортируем по расстоянию (сначала те, у которых известно расстояние)"""
+
         restaurants_with_distance.sort(key=lambda x: (x['distance'] is None, x['distance']))
 
         return restaurants_with_distance
