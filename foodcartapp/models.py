@@ -253,8 +253,6 @@ class Order(models.Model):
         blank=True
     )
 
-    # Убираем координаты - будем использовать Location
-
     class Meta:
         verbose_name = 'заказ'
         verbose_name_plural = 'заказы'
@@ -313,7 +311,5 @@ class Order(models.Model):
                 'distance': dist
             })
 
-
         restaurants_with_distance.sort(key=lambda x: (x['distance'] is None, x['distance']))
-
         return restaurants_with_distance

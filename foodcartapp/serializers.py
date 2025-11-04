@@ -30,7 +30,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ['firstname', 'lastname', 'phonenumber', 'address', 'products']  # ДОБАВИЛИ 'products'
+        fields = ['firstname', 'lastname', 'phonenumber', 'address', 'products']
 
     def validate_firstname(self, value):
         if len(value.strip()) < 2:
