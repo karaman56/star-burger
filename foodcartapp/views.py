@@ -60,25 +60,20 @@ def product_list_api(request):
     })
 
 
-@csrf_exempt
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 def register_order(request):
-    if request.method == 'GET':
-        return Response({'status': 'ready'})
+    serializer = OrderSerializer(data=request.data)
 
-    elif request.method == 'POST':
-        serializer = OrderSerializer(data=request.data)
-
-        if serializer.is_valid():
-            order = serializer.save()
-            return Response({
-                'order_id': order.id,
-                'status': 'success',
-                'message': 'Заказ успешно создан',
-            })
-
+    if serializer.is_valid():
+        order = serializer.save()
         return Response({
-            'status': 'error',
-            'message': 'Невалидные данные заказа',
-            'errors': serializer.errors
-        }, status=status.HTTP_400_BAD_REQUEST)
+            'order_id': order.id,
+            'status': 'success',
+            'message': 'Заказ успешно создан',
+        })
+
+    return Response({
+        'status': 'error',
+        'message': 'Невалидные данные заказа',
+        'errors': serializer.errors
+    }, status=status.HTTP_400_BAD_REQUEST)

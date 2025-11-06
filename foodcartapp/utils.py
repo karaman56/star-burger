@@ -52,7 +52,7 @@ def get_restaurant_distances(order_address, restaurants, apikey):
             restaurant_coords = fetch_coordinates(apikey, restaurant.address)
             if restaurant_coords:
                 dist = calculate_distance(order_coords, restaurant_coords)
-                distances[restaurant.id] = round(dist, 2)  # округляем до 2 знаков
+                distances[restaurant.id] = round(dist, 2)
             else:
                 distances[restaurant.id] = None
         except Exception as e:

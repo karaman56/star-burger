@@ -1,5 +1,5 @@
 from .models import Location
-from restaurateur.geocoder import fetch_coordinates
+from .geocoder import fetch_coordinates
 from django.conf import settings
 from django.utils import timezone
 

@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils import timezone
 from geopy.distance import distance
+from django.db.models import F, Sum, ExpressionWrapper, DecimalField
 
 
 class Restaurant(models.Model):
@@ -21,7 +22,6 @@ class Restaurant(models.Model):
         max_length=50,
         blank=True,
     )
-
 
     class Meta:
         verbose_name = 'ресторан'
@@ -159,8 +159,7 @@ class OrderItem(models.Model):
         'цена',
         max_digits=8,
         decimal_places=2,
-        validators=[MinValueValidator(0)],
-        default=0
+        validators=[MinValueValidator(0)]
     )
 
     class Meta:
@@ -170,10 +169,32 @@ class OrderItem(models.Model):
     def __str__(self):
         return f"{self.product.name} x{self.quantity}"
 
-    def clean(self):
-        """Валидация на уровне модели"""
-        if self.price < 0:
-            raise ValidationError({'price': 'Цена не может быть отрицательной'})
+
+class OrderQuerySet(models.QuerySet):
+    def with_total_cost(self):
+        """Добавляет аннотацию с общей стоимостью заказа"""
+        return self.annotate(
+            total_cost=Sum(
+                ExpressionWrapper(
+                    F('items__price') * F('items__quantity'),
+                    output_field=DecimalField(max_digits=10, decimal_places=2)
+                )
+            )
+        )
+
+    def with_available_restaurants(self):
+        """Добавляет аннотацию с доступными ресторанами для заказа"""
+        from django.db.models import Count
+
+        return self.annotate(
+            available_restaurants_count=Count(
+                'items__product__menu_items__restaurant',
+                filter=models.Q(
+                    items__product__menu_items__availability=True
+                ),
+                distinct=True
+            )
+        )
 
 
 class Order(models.Model):
@@ -216,7 +237,6 @@ class Order(models.Model):
         'способ оплаты',
         max_length=20,
         choices=PAYMENT_METHOD_CHOICES,
-        default='cash',
         db_index=True
     )
 
@@ -237,12 +257,14 @@ class Order(models.Model):
     called_at = models.DateTimeField(
         'позвонили',
         blank=True,
-        null=True
+        null=True,
+        db_index=True
     )
     delivered_at = models.DateTimeField(
         'доставлен',
         blank=True,
-        null=True
+        null=True,
+        db_index=True
     )
     comment = models.TextField(
         'комментарий',
@@ -253,6 +275,8 @@ class Order(models.Model):
         blank=True
     )
 
+    objects = OrderQuerySet.as_manager()
+
     class Meta:
         verbose_name = 'заказ'
         verbose_name_plural = 'заказы'
@@ -260,6 +284,10 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Заказ #{self.id} - {self.firstname} {self.lastname}"
+
+    def is_address_found(self):
+        """Проверяет, найден ли адрес заказа в геокодере"""
+        return self.get_coordinates() is not None
 
     def get_coordinates(self):
         """Возвращает координаты заказа через Location"""

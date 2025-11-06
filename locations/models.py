@@ -6,8 +6,7 @@ class Location(models.Model):
     address = models.CharField(
         'адрес',
         max_length=200,
-        unique=True,
-        db_index=True
+        unique=True
     )
     latitude = models.FloatField(
         'Широта',

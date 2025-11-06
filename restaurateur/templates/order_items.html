@@ -23,6 +23,14 @@
       color: #dc3545;
       font-weight: bold;
     }
+    .text-danger {
+      color: #dc3545;
+      font-weight: bold;
+      padding: 5px;
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      border-radius: 4px;
+    }
   </style>
 
   <div class="container">
@@ -66,33 +74,35 @@
         <td>{{ order.address }}</td>
         <td>
           {% if order.cooking_restaurant %}
-            <!-- Если ресторан выбран -->
             <div class="selected-restaurant">
               ✅ {{ order.cooking_restaurant.name }}
             </div>
           {% else %}
-            {% if order.available_restaurants %}
-              <div class="restaurant-info">
-                <strong>Могут приготовить:</strong>
-                {% for restaurant_info in order.available_restaurants %}
-                  <div class="available-restaurant">
-                    • {{ restaurant_info.restaurant.name }}
-                    {% if restaurant_info.distance is not None %}
-                      <div class="distance-info">
-                        📍 ~{{ restaurant_info.distance|floatformat:2 }} км
-                      </div>
-                    {% else %}
-                      <div class="distance-info">
-                        📍 расстояние не известно
-                      </div>
-                    {% endif %}
-                  </div>
-                {% endfor %}
+            {% if not order.is_address_found %}
+              <!-- Если адрес не найден -->
+              <div class="text-danger">
+                ❌ Адрес не найден
               </div>
             {% else %}
-              <div class="no-restaurants">
-                ❌ Нет подходящих ресторанов
-              </div>
+              {% if order.available_restaurants %}
+                <div class="restaurant-info">
+                  <strong>Могут приготовить:</strong>
+                  {% for restaurant_info in order.available_restaurants %}
+                    <div class="available-restaurant">
+                      • {{ restaurant_info.restaurant.name }}
+                      {% if restaurant_info.distance is not None %}
+                        <div class="distance-info">
+                          📍 ~{{ restaurant_info.distance|floatformat:2 }} км
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% else %}
+                <div class="no-restaurants">
+                  ❌ Нет подходящих ресторанов
+                </div>
+              {% endif %}
             {% endif %}
           {% endif %}
         </td>
@@ -109,8 +119,8 @@
         <td>{{ order.called_at|date:"d.m.Y H:i"|default:"-" }}</td>
         <td>{{ order.delivered_at|date:"d.m.Y H:i"|default:"-" }}</td>
         <td><strong>{{ order.total_amount }} руб.</strong></td>
-        <td>{{ order.comment|default:"-" }}</td>
-        <td>{{ order.manager_comment|default:"-" }}</td>
+        <td class="comment-column">{{ order.comment|default:"-" }}</td>
+        <td class="comment-column">{{ order.manager_comment|default:"-" }}</td>
         <td>
           <ul>
             {% for product in order.products %}
