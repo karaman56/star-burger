@@ -11,6 +11,8 @@ from django.contrib.auth import views as auth_views
 from locations.utils import get_or_create_location, batch_update_locations
 from collections import defaultdict
 from geopy.distance import distance
+from locations.models import Location
+from locations.utils import get_or_create_location
 
 
 class Login(forms.Form):
@@ -95,18 +97,14 @@ def view_restaurants(request):
 
 def get_addresses_coordinates(addresses):
     """Получает координаты для всех адресов сразу"""
-    from locations.models import Location
-    from locations.utils import get_or_create_location
 
     coordinates_dict = {}
 
-    # Получаем существующие локации
     existing_locations = Location.objects.filter(address__in=addresses)
     for location in existing_locations:
         if location.latitude and location.longitude:
             coordinates_dict[location.address] = (location.latitude, location.longitude)
 
-    # Обрабатываем отсутствующие адреса
     for address in addresses:
         if address not in coordinates_dict:
             location = get_or_create_location(address)

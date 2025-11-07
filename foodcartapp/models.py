@@ -182,20 +182,6 @@ class OrderQuerySet(models.QuerySet):
             )
         )
 
-    def with_available_restaurants(self):
-        """Добавляет аннотацию с доступными ресторанами для заказа"""
-        from django.db.models import Count
-
-        return self.annotate(
-            available_restaurants_count=Count(
-                'items__product__menu_items__restaurant',
-                filter=models.Q(
-                    items__product__menu_items__availability=True
-                ),
-                distinct=True
-            )
-        )
-
 
 class Order(models.Model):
     STATUS_CHOICES = [
@@ -300,44 +286,4 @@ class Order(models.Model):
             pass
         return None
 
-    def calculate_distance_to_restaurant(self, restaurant):
-        """Рассчитывает расстояние от заказа до ресторана в км"""
-        order_coords = self.get_coordinates()
-        restaurant_coords = restaurant.get_coordinates()
 
-        if not order_coords or not restaurant_coords:
-            return None
-
-        try:
-            return distance(order_coords, restaurant_coords).km
-        except Exception:
-            return None
-
-    def get_available_restaurants(self):
-        """Определяет какие рестораны могут приготовить весь заказ с расстояниями"""
-        from django.db.models import Count
-
-        order_products = self.items.values_list('product', flat=True)
-
-        if not order_products:
-            return []
-
-        available_restaurants = Restaurant.objects.filter(
-            menu_items__product__in=order_products,
-            menu_items__availability=True
-        ).annotate(
-            matching_products=Count('menu_items__product', distinct=True)
-        ).filter(
-            matching_products=len(order_products)
-        ).distinct()
-
-        restaurants_with_distance = []
-        for restaurant in available_restaurants:
-            dist = self.calculate_distance_to_restaurant(restaurant)
-            restaurants_with_distance.append({
-                'restaurant': restaurant,
-                'distance': dist
-            })
-
-        restaurants_with_distance.sort(key=lambda x: (x['distance'] is None, x['distance']))
-        return restaurants_with_distance
