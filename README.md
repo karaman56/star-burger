@@ -183,6 +183,64 @@ DEBUG должен быть всегда False в production для безопа
 
 ALLOWED_HOSTS должен содержать все домены, на которых работает ваш сайт
 
+
+### Мониторинг ошибок с Rollbar
+
+Для мониторинга ошибок на production-сервере используется сервис Rollbar.
+Обязательная настройка для production
+ROLLBAR_ACCESS_TOKEN - API-ключ для сервиса Rollbar
+Назначение: используется для отслеживания ошибок и исключений в реальном времени
+Как получить: зарегистрироваться на Rollbar и создать новый проект типа "Django"
+Пример: abc123def456ghi789jkl012mno345pqr678
+Как настроить Rollbar
+Добавьте переменную окружения в файл .env:
+
+```
+ROLLBAR_ACCESS_TOKEN=ваш_токен_rollbar
+```
+Настройет в settings.py, следующую конфигурацию:
+
+```
+ROLLBAR_ACCESS_TOKEN = env('ROLLBAR_ACCESS_TOKEN', '')
+
+
+ROLLBAR = {
+    'access_token': ROLLBAR_ACCESS_TOKEN,
+    'environment': 'development' if DEBUG else 'production',
+    'branch': 'master',
+    'root': BASE_DIR,
+}
+
+if ROLLBAR['access_token']:
+    rollbar.init(**ROLLBAR)
+```
+
+В MIDDLEWARE добавьте:
+
+```
+'rollbar.contrib.django.middleware.RollbarNotifierMiddlewareExcluding404',
+'rollbar.contrib.django.middleware.RollbarNotifierMiddlewareOnly404',
+```
+
+В INSTALLED_APPS добавьте:
+
+```
+'rollbar',
+```
+
+#### Особенности настройки
+- При DEBUG=True ошибки отправляются в environment development
+- При DEBUG=False ошибки отправляются в environment production
+- Ошибки 404 не отправляются в Rollbar (чтобы не засорять логи)
+
+Для отправки тестового сообщения используйте:
+
+``` bash
+cd star-burger
+source venv/bin/activate
+python -c "import rollbar; rollbar.report_message('Тестовое сообщение', 'info')"
+```
+
 Особенности проекта
 Геокодирование и расчет расстояний
 Проект использует Яндекс Геокодер API для:
@@ -197,3 +255,4 @@ ALLOWED_HOSTS должен содержать все домены, на кото
 Код написан в учебных целях — это урок в курсе по Python и веб-разработке на сайте Devman. За основу был взят код проекта FoodCart.
 Где используется репозиторий:
 Вторй и третий урок учебного курса Django
+http://93.183.82.243

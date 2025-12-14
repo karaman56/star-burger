@@ -1,5 +1,6 @@
 import os
 import dj_database_url
+import rollbar
 from environs import Env
 
 
@@ -10,9 +11,13 @@ env.read_env()
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env.bool('DEBUG', True)
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', ['127.0.0.1', 'localhost'])
+YANDEX_GEOCODER_APIKEY = env('YANDEX_GEOCODER_APIKEY')
+ROLLBAR_ACCESS_TOKEN = env('ROLLBAR_ACCESS_TOKEN', '')
+
 
 INSTALLED_APPS = [
     'foodcartapp.apps.FoodcartappConfig',
@@ -27,6 +32,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'rest_framework',
     'debug_toolbar',
+    'rollbar',
 ]
 
 MIDDLEWARE = [
@@ -38,6 +44,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddlewareExcluding404',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddlewareOnly404',
 ]
 
 ROOT_URLCONF = 'star_burger.urls'
@@ -123,4 +131,15 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "bundles"),
 ]
 
-YANDEX_GEOCODER_APIKEY = env('YANDEX_GEOCODER_APIKEY')
+
+
+
+ROLLBAR = {
+    'access_token': ROLLBAR_ACCESS_TOKEN,
+    'environment': 'development' if DEBUG else 'production',
+    'branch': 'master',
+    'root': BASE_DIR,
+}
+
+if ROLLBAR['access_token']:
+    rollbar.init(**ROLLBAR)
