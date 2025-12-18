@@ -1,0 +1,3256 @@
+[
+{
+  "model": "foodcartapp.restaurant",
+  "pk": 1,
+  "fields": {
+    "name": "Star Burger Арбат",
+    "address": "Москва, ул. Новый Арбат, 15",
+    "contact_phone": "+7 (967) 157-44-13"
+  }
+},
+{
+  "model": "foodcartapp.restaurant",
+  "pk": 2,
+  "fields": {
+    "name": "Star Burger Цветной",
+    "address": "Москва, Цветной бульвар, 11с2",
+    "contact_phone": "+7 (929) 949-55-36"
+  }
+},
+{
+  "model": "foodcartapp.restaurant",
+  "pk": 3,
+  "fields": {
+    "name": "Star Burger Европейский",
+    "address": "Москва, пл. Киевского Вокзала, 2",
+    "contact_phone": "+7 (929) 680-47-58"
+  }
+},
+{
+  "model": "foodcartapp.productcategory",
+  "pk": 1,
+  "fields": {
+    "name": "Бургер"
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 1,
+  "fields": {
+    "name": "Стейкхаус",
+    "category": 1,
+    "price": "269.00",
+    "image": "steak_tmxupo5.jpg",
+    "special_status": false,
+    "description": "Стейкхаус – это сочетание нашей фирменной, приготовленной на огне 100% говядины с ломтиками бекона и соусом «Барбекю», майонезом, листьями свежего салата, помидором и хрустящим луком на воздушной було"
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 2,
+  "fields": {
+    "name": "Лонг Чизбургер",
+    "category": 1,
+    "price": "219.00",
+    "image": "long_chiz_PTNv28N.jpg",
+    "special_status": false,
+    "description": "Лонг Чизбургер – эталон в коллекции чизбургеров! Два приготовленных на огне бифштекса с двумя ломтиками слегка расплавленного сыра, хрустящими огурчиками, рубленым луком, горчицей и кетчупом на длинно"
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 3,
+  "fields": {
+    "name": "Тройной Воппер",
+    "category": 1,
+    "price": "369.00",
+    "image": "triple_vopper_wx4x6rc.jpg",
+    "special_status": false,
+    "description": "ВОППЕР® — это вкуснейшая приготовленная на огне 100% говядина с сочными помидорами, свежим нарезанным листовым салатом, густым майонезом, хрустящими маринованными огурчиками и свежим луком на нежной б"
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 4,
+  "fields": {
+    "name": "Беконайзер",
+    "category": 1,
+    "price": "319.00",
+    "image": "beconizer_namEfU1.jpg",
+    "special_status": false,
+    "description": "Встречай самый внушительный бургер в коллекции Бургер Кинг. Много мяса, много бекона и много сыра - все, как ты любишь, и ничего лишнего!"
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 1,
+  "fields": {
+    "restaurant": 3,
+    "product": 1,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 2,
+  "fields": {
+    "restaurant": 3,
+    "product": 2,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 3,
+  "fields": {
+    "restaurant": 3,
+    "product": 3,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 4,
+  "fields": {
+    "restaurant": 3,
+    "product": 4,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 5,
+  "fields": {
+    "restaurant": 2,
+    "product": 1,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 6,
+  "fields": {
+    "restaurant": 2,
+    "product": 2,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 7,
+  "fields": {
+    "restaurant": 2,
+    "product": 3,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 8,
+  "fields": {
+    "restaurant": 2,
+    "product": 4,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 9,
+  "fields": {
+    "restaurant": 1,
+    "product": 1,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 10,
+  "fields": {
+    "restaurant": 1,
+    "product": 2,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 11,
+  "fields": {
+    "restaurant": 1,
+    "product": 3,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 12,
+  "fields": {
+    "restaurant": 1,
+    "product": 4,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 1,
+  "fields": {
+    "order": 5,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 2,
+  "fields": {
+    "order": 6,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 3,
+  "fields": {
+    "order": 7,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 4,
+  "fields": {
+    "order": 8,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 5,
+  "fields": {
+    "order": 9,
+    "product": 2,
+    "quantity": 2,
+    "price": "219.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 6,
+  "fields": {
+    "order": 9,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 7,
+  "fields": {
+    "order": 10,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 8,
+  "fields": {
+    "order": 11,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 9,
+  "fields": {
+    "order": 12,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 10,
+  "fields": {
+    "order": 13,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 11,
+  "fields": {
+    "order": 17,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 12,
+  "fields": {
+    "order": 18,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 13,
+  "fields": {
+    "order": 19,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 14,
+  "fields": {
+    "order": 22,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 15,
+  "fields": {
+    "order": 23,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 16,
+  "fields": {
+    "order": 25,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 17,
+  "fields": {
+    "order": 27,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 18,
+  "fields": {
+    "order": 28,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 19,
+  "fields": {
+    "order": 29,
+    "product": 4,
+    "quantity": 1,
+    "price": "319.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 20,
+  "fields": {
+    "order": 30,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 21,
+  "fields": {
+    "order": 31,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 22,
+  "fields": {
+    "order": 32,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 23,
+  "fields": {
+    "order": 33,
+    "product": 3,
+    "quantity": 2,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 24,
+  "fields": {
+    "order": 34,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 25,
+  "fields": {
+    "order": 35,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 26,
+  "fields": {
+    "order": 36,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 27,
+  "fields": {
+    "order": 37,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 28,
+  "fields": {
+    "order": 38,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 29,
+  "fields": {
+    "order": 39,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 30,
+  "fields": {
+    "order": 40,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 31,
+  "fields": {
+    "order": 41,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 32,
+  "fields": {
+    "order": 42,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 33,
+  "fields": {
+    "order": 43,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 34,
+  "fields": {
+    "order": 44,
+    "product": 2,
+    "quantity": 2,
+    "price": "219.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 35,
+  "fields": {
+    "order": 45,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 36,
+  "fields": {
+    "order": 46,
+    "product": 3,
+    "quantity": 2,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 37,
+  "fields": {
+    "order": 46,
+    "product": 2,
+    "quantity": 1,
+    "price": "219.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 38,
+  "fields": {
+    "order": 46,
+    "product": 1,
+    "quantity": 1,
+    "price": "269.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 39,
+  "fields": {
+    "order": 46,
+    "product": 4,
+    "quantity": 5,
+    "price": "319.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 40,
+  "fields": {
+    "order": 47,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 41,
+  "fields": {
+    "order": 48,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 42,
+  "fields": {
+    "order": 49,
+    "product": 2,
+    "quantity": 1,
+    "price": "219.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 43,
+  "fields": {
+    "order": 50,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 44,
+  "fields": {
+    "order": 51,
+    "product": 2,
+    "quantity": 1,
+    "price": "219.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 45,
+  "fields": {
+    "order": 52,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 46,
+  "fields": {
+    "order": 53,
+    "product": 3,
+    "quantity": 5,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 47,
+  "fields": {
+    "order": 54,
+    "product": 3,
+    "quantity": 3,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 48,
+  "fields": {
+    "order": 55,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 49,
+  "fields": {
+    "order": 56,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 50,
+  "fields": {
+    "order": 57,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 51,
+  "fields": {
+    "order": 58,
+    "product": 2,
+    "quantity": 1,
+    "price": "219.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 52,
+  "fields": {
+    "order": 59,
+    "product": 3,
+    "quantity": 3,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 53,
+  "fields": {
+    "order": 60,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 54,
+  "fields": {
+    "order": 61,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 55,
+  "fields": {
+    "order": 62,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 56,
+  "fields": {
+    "order": 63,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 57,
+  "fields": {
+    "order": 64,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 58,
+  "fields": {
+    "order": 65,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 59,
+  "fields": {
+    "order": 66,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 60,
+  "fields": {
+    "order": 67,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 61,
+  "fields": {
+    "order": 68,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 62,
+  "fields": {
+    "order": 69,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 63,
+  "fields": {
+    "order": 70,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 64,
+  "fields": {
+    "order": 71,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 65,
+  "fields": {
+    "order": 72,
+    "product": 1,
+    "quantity": 2,
+    "price": "269.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 66,
+  "fields": {
+    "order": 73,
+    "product": 3,
+    "quantity": 1,
+    "price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 1,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79128468912",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-03T17:49:41.648Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 2,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "88888888",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-03T17:49:46.539Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 3,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "8888888888",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-03T19:04:27.361Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 4,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "00000000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-03T19:30:16.535Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 5,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "11111111",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-03T19:36:43.958Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 6,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "processing",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-04T20:51:37.462Z",
+    "called_at": "2025-10-20T20:33:38Z",
+    "delivered_at": "2025-10-20T20:33:40Z",
+    "comment": "ывфв",
+    "manager_comment": "фывфв"
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 7,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "888888888888",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-04T21:00:27.862Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 8,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "00000000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-08T19:07:14.638Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 9,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "88888888",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-08T19:47:34.496Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 10,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "88888888",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-08T19:56:50.385Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 11,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "88888888",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-09T18:48:52.112Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 12,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79128415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-09T18:50:04.472Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": "цйысввйвфйв"
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 13,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "88888888",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-09T18:52:02.098Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 14,
+  "fields": {
+    "firstname": "Иван",
+    "lastname": "Петров",
+    "phonenumber": "+79291000000",
+    "address": "Москва",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-09T19:27:57.840Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 15,
+  "fields": {
+    "firstname": "Иван",
+    "lastname": "Петров",
+    "phonenumber": "+79291000000",
+    "address": "Москва",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-09T19:28:25.807Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 16,
+  "fields": {
+    "firstname": "Иван",
+    "lastname": "Петров",
+    "phonenumber": "+79291000000",
+    "address": "Москва",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-09T19:28:50.674Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 17,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "11111111",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-09T19:30:39.216Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 18,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "8888888888",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-09T19:37:35.264Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 19,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "8888888888",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-09T19:38:26.324Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 20,
+  "fields": {
+    "firstname": "Иван",
+    "lastname": "Петров",
+    "phonenumber": "+79291000000",
+    "address": "Москва",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-09T19:39:10.342Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 21,
+  "fields": {
+    "firstname": "Иван",
+    "lastname": "Петров",
+    "phonenumber": "+79291000000",
+    "address": "Москва",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-09T19:39:31.879Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 22,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "11111111",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-09T19:43:28.470Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 23,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "11111111",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-09T19:44:08.336Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 24,
+  "fields": {
+    "firstname": "Иван",
+    "lastname": "Петров",
+    "phonenumber": "+79291000000",
+    "address": "Москва",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-09T19:44:40.683Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 25,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "88888888",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-11T18:49:05.500Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 26,
+  "fields": {
+    "firstname": "Иван",
+    "lastname": "Петров",
+    "phonenumber": "+79291000000",
+    "address": "Москва",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-11T19:09:56.064Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 27,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "88888888",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-11T19:11:01.128Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 28,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "11111111",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-11T20:21:07.668Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 29,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "11111111",
+    "address": "Ankara манкара",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-11T21:27:53.304Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 30,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "11111111",
+    "address": "Ankaraffffffff",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-11T21:36:22.692Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 31,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "8888888888",
+    "address": "Ankara     мчмпчмчмчм",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-11T22:23:13.422Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 32,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "8888888888",
+    "address": "Ankara     мчмпчмчмчм",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-11T22:25:08.206Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 33,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-13T20:51:39.150Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 34,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-13T21:10:01.632Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 35,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-13T21:11:50.830Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 36,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-15T18:36:06.080Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 37,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-15T18:37:42.492Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 38,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-15T18:40:17.659Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 39,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-15T18:40:36.268Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 40,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-15T18:41:28.957Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 41,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-15T18:41:39.602Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 42,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-15T18:42:03.475Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 43,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-15T19:28:09.983Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 44,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-16T18:20:24.166Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 45,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-16T20:43:51.226Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 46,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-18T19:46:16.294Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 47,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-09-20T19:52:16.410Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 48,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Москва, пл. Киевского Вокзала, 2",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-10-13T19:54:20.597Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 49,
+  "fields": {
+    "firstname": "Танатарова",
+    "lastname": "Лязат",
+    "phonenumber": "+79128428658",
+    "address": "Село Шильда",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-10-14T15:53:04.331Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 50,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Москва, пл. Киевского Вокзала, 2",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-10-14T16:28:53.153Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 51,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-10-16T20:23:44.461Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 52,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Москва, ул. Новый Арбат, 15",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-10-18T19:35:55.175Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "увацуа",
+    "manager_comment": "44444"
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 53,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Москва, пл. Киевского Вокзала, 2",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-10-19T19:40:38.591Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 54,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Москва, пл. Киевского Вокзала, 2",
+    "status": "new",
+    "payment_method": "electronic",
+    "cooking_restaurant": null,
+    "created_at": "2025-10-20T20:32:15.481Z",
+    "called_at": "2025-10-20T20:33:38Z",
+    "delivered_at": "2025-10-20T20:33:40Z",
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 55,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-10-30T18:04:50.859Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 56,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-10-30T21:32:20.097Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 57,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Ankara",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-03T19:52:39.749Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 58,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Москва, пл. Киевского Вокзала, 2",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-03T19:53:04.573Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 59,
+  "fields": {
+    "firstname": "караман",
+    "lastname": "Красавчик",
+    "phonenumber": "+79228415000",
+    "address": "Москва, пл. Киевского Вокзала, 2",
+    "status": "processing",
+    "payment_method": "electronic",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-03T20:26:21.577Z",
+    "called_at": "2025-10-20T20:33:38Z",
+    "delivered_at": "2025-10-20T00:00:00Z",
+    "comment": "красавчик бро",
+    "manager_comment": "красавчик бро"
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 60,
+  "fields": {
+    "firstname": "краман",
+    "lastname": "караман",
+    "phonenumber": "+79228415000",
+    "address": "пиздоростан",
+    "status": "new",
+    "payment_method": "",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-05T19:53:54.135Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 61,
+  "fields": {
+    "firstname": "караман",
+    "lastname": "романов",
+    "phonenumber": "+79228415000",
+    "address": "пиздохранилище",
+    "status": "new",
+    "payment_method": "",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-05T20:11:44.722Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 62,
+  "fields": {
+    "firstname": "караман",
+    "lastname": "романов",
+    "phonenumber": "+79228415000",
+    "address": "Оренбург, ул. Володарского, 16",
+    "status": "new",
+    "payment_method": "",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-05T20:16:04.017Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 63,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Моск",
+    "status": "new",
+    "payment_method": "",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-05T20:16:51.536Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 64,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Москва, пл. Киевского Вокзала, 2",
+    "status": "new",
+    "payment_method": "cash",
+    "cooking_restaurant": 1,
+    "created_at": "2025-11-05T20:17:24.239Z",
+    "called_at": "2025-10-20T20:33:38Z",
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 65,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Москва, ул. Новый Арбат, 15",
+    "status": "new",
+    "payment_method": "",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-05T20:28:54.845Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 66,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Москва, ул. Новый Арбат, 15",
+    "status": "new",
+    "payment_method": "",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-05T20:35:40.950Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 67,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Москва, Цветной бульвар, 11с2",
+    "status": "new",
+    "payment_method": "",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-05T20:47:39.376Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 68,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Москва, Цветной бульвар, 11с2",
+    "status": "new",
+    "payment_method": "",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-05T20:53:44.629Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 69,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Оренбург, ул. Володарского, 16",
+    "status": "new",
+    "payment_method": "",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-05T21:02:42.216Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 70,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Оренбург, ул. Володарского, 16",
+    "status": "new",
+    "payment_method": "",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-06T20:12:04.247Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 71,
+  "fields": {
+    "firstname": "караман",
+    "lastname": "Красавчик",
+    "phonenumber": "+79228415000",
+    "address": "Москва, ул. Новый Арбат, 15",
+    "status": "new",
+    "payment_method": "electronic",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-06T20:19:26.257Z",
+    "called_at": "2025-10-20T20:33:38Z",
+    "delivered_at": null,
+    "comment": "красавичк",
+    "manager_comment": "красавчик"
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 72,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Оренбург, ул. Володарского, 16",
+    "status": "new",
+    "payment_method": "",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-06T20:52:36.086Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 73,
+  "fields": {
+    "firstname": "Devman",
+    "lastname": "Devman",
+    "phonenumber": "+79228415000",
+    "address": "Москва, пл. Киевского Вокзала, 2",
+    "status": "new",
+    "payment_method": "",
+    "cooking_restaurant": null,
+    "created_at": "2025-11-07T19:57:40.243Z",
+    "called_at": null,
+    "delivered_at": null,
+    "comment": "",
+    "manager_comment": ""
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 14,
+  "fields": {
+    "address": "Ankara     мчмпчмчмчм",
+    "latitude": null,
+    "longitude": null,
+    "created_at": "2025-11-05T20:34:19.606Z",
+    "updated_at": "2025-11-07T19:57:48.912Z",
+    "last_geocode_attempt": "2025-11-07T19:57:48.912Z"
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 15,
+  "fields": {
+    "address": "Москва",
+    "latitude": 55.755864,
+    "longitude": 37.617698,
+    "created_at": "2025-11-05T20:34:19.957Z",
+    "updated_at": "2025-11-05T20:34:20.283Z",
+    "last_geocode_attempt": "2025-11-05T20:34:20.282Z"
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 16,
+  "fields": {
+    "address": "Ankara манкара",
+    "latitude": 39.938433,
+    "longitude": 32.853869,
+    "created_at": "2025-11-05T20:34:20.291Z",
+    "updated_at": "2025-11-05T20:34:20.601Z",
+    "last_geocode_attempt": "2025-11-05T20:34:20.601Z"
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 17,
+  "fields": {
+    "address": "Ankaraffffffff",
+    "latitude": null,
+    "longitude": null,
+    "created_at": "2025-11-05T20:34:20.609Z",
+    "updated_at": "2025-11-07T19:57:47.550Z",
+    "last_geocode_attempt": "2025-11-07T19:57:47.550Z"
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 18,
+  "fields": {
+    "address": "Москва, Цветной бульвар, 11с2",
+    "latitude": 55.770076,
+    "longitude": 37.620429,
+    "created_at": "2025-11-05T20:34:20.899Z",
+    "updated_at": "2025-11-05T20:34:21.190Z",
+    "last_geocode_attempt": "2025-11-05T20:34:21.189Z"
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 19,
+  "fields": {
+    "address": "пиздохранилище",
+    "latitude": null,
+    "longitude": null,
+    "created_at": "2025-11-05T20:34:21.199Z",
+    "updated_at": "2025-11-07T19:57:47.274Z",
+    "last_geocode_attempt": "2025-11-07T19:57:47.274Z"
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 20,
+  "fields": {
+    "address": "Москва, пл. Киевского Вокзала, 2",
+    "latitude": 55.744637,
+    "longitude": 37.566072,
+    "created_at": "2025-11-05T20:34:21.497Z",
+    "updated_at": "2025-11-05T20:34:21.788Z",
+    "last_geocode_attempt": "2025-11-05T20:34:21.788Z"
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 21,
+  "fields": {
+    "address": "пиздоростан",
+    "latitude": null,
+    "longitude": null,
+    "created_at": "2025-11-05T20:34:21.799Z",
+    "updated_at": "2025-11-07T19:57:49.200Z",
+    "last_geocode_attempt": "2025-11-07T19:57:49.200Z"
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 22,
+  "fields": {
+    "address": "Село Шильда",
+    "latitude": 51.814792,
+    "longitude": 59.771447,
+    "created_at": "2025-11-05T20:34:22.100Z",
+    "updated_at": "2025-11-05T20:34:22.383Z",
+    "last_geocode_attempt": "2025-11-05T20:34:22.382Z"
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 23,
+  "fields": {
+    "address": "Оренбург, ул. Володарского, 16",
+    "latitude": 51.768188,
+    "longitude": 55.101824,
+    "created_at": "2025-11-05T20:34:22.394Z",
+    "updated_at": "2025-11-05T20:34:22.642Z",
+    "last_geocode_attempt": "2025-11-05T20:34:22.642Z"
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 24,
+  "fields": {
+    "address": "Ankara",
+    "latitude": 39.938433,
+    "longitude": 32.853869,
+    "created_at": "2025-11-05T20:34:22.652Z",
+    "updated_at": "2025-11-05T20:34:22.970Z",
+    "last_geocode_attempt": "2025-11-05T20:34:22.969Z"
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 25,
+  "fields": {
+    "address": "Москва, ул. Новый Арбат, 15",
+    "latitude": 55.751933,
+    "longitude": 37.593066,
+    "created_at": "2025-11-05T20:34:22.978Z",
+    "updated_at": "2025-11-05T20:34:23.291Z",
+    "last_geocode_attempt": "2025-11-05T20:34:23.291Z"
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 26,
+  "fields": {
+    "address": "Моск",
+    "latitude": 55.602149,
+    "longitude": 37.346551,
+    "created_at": "2025-11-05T20:34:23.301Z",
+    "updated_at": "2025-11-05T20:34:23.603Z",
+    "last_geocode_attempt": "2025-11-05T20:34:23.603Z"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2025-08-30T19:01:56.045Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "1",
+    "object_repr": "Star Burger Арбат",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2025-08-30T19:02:37.943Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "2",
+    "object_repr": "Star Burger Цветной",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2025-08-30T19:04:34.188Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "3",
+    "object_repr": "Star Burger Европейский",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2025-08-30T19:07:09.245Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "1",
+    "object_repr": "Бургер",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2025-08-30T19:13:06.332Z",
+    "user": 1,
+    "content_type": 1,
+    "object_id": "1",
+    "object_repr": "Стейкхаус",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2025-08-30T19:14:39.988Z",
+    "user": 1,
+    "content_type": 1,
+    "object_id": "2",
+    "object_repr": "Лонг Чизбургер",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2025-08-30T19:18:22.832Z",
+    "user": 1,
+    "content_type": 1,
+    "object_id": "3",
+    "object_repr": "Тройной Воппер",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2025-08-30T19:19:27.126Z",
+    "user": 1,
+    "content_type": 1,
+    "object_id": "4",
+    "object_repr": "Беконайзер",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2025-08-30T19:23:44.940Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "3",
+    "object_repr": "Star Burger Европейский",
+    "action_flag": 2,
+    "change_message": "[{\"added\": {\"name\": \"\\u043f\\u0443\\u043d\\u043a\\u0442 \\u043c\\u0435\\u043d\\u044e \\u0440\\u0435\\u0441\\u0442\\u043e\\u0440\\u0430\\u043d\\u0430\", \"object\": \"Star Burger \\u0415\\u0432\\u0440\\u043e\\u043f\\u0435\\u0439\\u0441\\u043a\\u0438\\u0439 - \\u0421\\u0442\\u0435\\u0439\\u043a\\u0445\\u0430\\u0443\\u0441\"}}, {\"added\": {\"name\": \"\\u043f\\u0443\\u043d\\u043a\\u0442 \\u043c\\u0435\\u043d\\u044e \\u0440\\u0435\\u0441\\u0442\\u043e\\u0440\\u0430\\u043d\\u0430\", \"object\": \"Star Burger \\u0415\\u0432\\u0440\\u043e\\u043f\\u0435\\u0439\\u0441\\u043a\\u0438\\u0439 - \\u041b\\u043e\\u043d\\u0433 \\u0427\\u0438\\u0437\\u0431\\u0443\\u0440\\u0433\\u0435\\u0440\"}}, {\"added\": {\"name\": \"\\u043f\\u0443\\u043d\\u043a\\u0442 \\u043c\\u0435\\u043d\\u044e \\u0440\\u0435\\u0441\\u0442\\u043e\\u0440\\u0430\\u043d\\u0430\", \"object\": \"Star Burger \\u0415\\u0432\\u0440\\u043e\\u043f\\u0435\\u0439\\u0441\\u043a\\u0438\\u0439 - \\u0422\\u0440\\u043e\\u0439\\u043d\\u043e\\u0439 \\u0412\\u043e\\u043f\\u043f\\u0435\\u0440\"}}, {\"added\": {\"name\": \"\\u043f\\u0443\\u043d\\u043a\\u0442 \\u043c\\u0435\\u043d\\u044e \\u0440\\u0435\\u0441\\u0442\\u043e\\u0440\\u0430\\u043d\\u0430\", \"object\": \"Star Burger \\u0415\\u0432\\u0440\\u043e\\u043f\\u0435\\u0439\\u0441\\u043a\\u0438\\u0439 - \\u0411\\u0435\\u043a\\u043e\\u043d\\u0430\\u0439\\u0437\\u0435\\u0440\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2025-08-30T19:23:55.730Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "3",
+    "object_repr": "Star Burger Европейский",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2025-08-30T19:24:00.942Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "3",
+    "object_repr": "Star Burger Европейский",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2025-08-30T19:24:19.268Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "2",
+    "object_repr": "Star Burger Цветной",
+    "action_flag": 2,
+    "change_message": "[{\"added\": {\"name\": \"\\u043f\\u0443\\u043d\\u043a\\u0442 \\u043c\\u0435\\u043d\\u044e \\u0440\\u0435\\u0441\\u0442\\u043e\\u0440\\u0430\\u043d\\u0430\", \"object\": \"Star Burger \\u0426\\u0432\\u0435\\u0442\\u043d\\u043e\\u0439 - \\u0421\\u0442\\u0435\\u0439\\u043a\\u0445\\u0430\\u0443\\u0441\"}}, {\"added\": {\"name\": \"\\u043f\\u0443\\u043d\\u043a\\u0442 \\u043c\\u0435\\u043d\\u044e \\u0440\\u0435\\u0441\\u0442\\u043e\\u0440\\u0430\\u043d\\u0430\", \"object\": \"Star Burger \\u0426\\u0432\\u0435\\u0442\\u043d\\u043e\\u0439 - \\u041b\\u043e\\u043d\\u0433 \\u0427\\u0438\\u0437\\u0431\\u0443\\u0440\\u0433\\u0435\\u0440\"}}, {\"added\": {\"name\": \"\\u043f\\u0443\\u043d\\u043a\\u0442 \\u043c\\u0435\\u043d\\u044e \\u0440\\u0435\\u0441\\u0442\\u043e\\u0440\\u0430\\u043d\\u0430\", \"object\": \"Star Burger \\u0426\\u0432\\u0435\\u0442\\u043d\\u043e\\u0439 - \\u0422\\u0440\\u043e\\u0439\\u043d\\u043e\\u0439 \\u0412\\u043e\\u043f\\u043f\\u0435\\u0440\"}}, {\"added\": {\"name\": \"\\u043f\\u0443\\u043d\\u043a\\u0442 \\u043c\\u0435\\u043d\\u044e \\u0440\\u0435\\u0441\\u0442\\u043e\\u0440\\u0430\\u043d\\u0430\", \"object\": \"Star Burger \\u0426\\u0432\\u0435\\u0442\\u043d\\u043e\\u0439 - \\u0411\\u0435\\u043a\\u043e\\u043d\\u0430\\u0439\\u0437\\u0435\\u0440\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2025-08-30T19:24:39.152Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "1",
+    "object_repr": "Star Burger Арбат",
+    "action_flag": 2,
+    "change_message": "[{\"added\": {\"name\": \"\\u043f\\u0443\\u043d\\u043a\\u0442 \\u043c\\u0435\\u043d\\u044e \\u0440\\u0435\\u0441\\u0442\\u043e\\u0440\\u0430\\u043d\\u0430\", \"object\": \"Star Burger \\u0410\\u0440\\u0431\\u0430\\u0442 - \\u0421\\u0442\\u0435\\u0439\\u043a\\u0445\\u0430\\u0443\\u0441\"}}, {\"added\": {\"name\": \"\\u043f\\u0443\\u043d\\u043a\\u0442 \\u043c\\u0435\\u043d\\u044e \\u0440\\u0435\\u0441\\u0442\\u043e\\u0440\\u0430\\u043d\\u0430\", \"object\": \"Star Burger \\u0410\\u0440\\u0431\\u0430\\u0442 - \\u041b\\u043e\\u043d\\u0433 \\u0427\\u0438\\u0437\\u0431\\u0443\\u0440\\u0433\\u0435\\u0440\"}}, {\"added\": {\"name\": \"\\u043f\\u0443\\u043d\\u043a\\u0442 \\u043c\\u0435\\u043d\\u044e \\u0440\\u0435\\u0441\\u0442\\u043e\\u0440\\u0430\\u043d\\u0430\", \"object\": \"Star Burger \\u0410\\u0440\\u0431\\u0430\\u0442 - \\u0422\\u0440\\u043e\\u0439\\u043d\\u043e\\u0439 \\u0412\\u043e\\u043f\\u043f\\u0435\\u0440\"}}, {\"added\": {\"name\": \"\\u043f\\u0443\\u043d\\u043a\\u0442 \\u043c\\u0435\\u043d\\u044e \\u0440\\u0435\\u0441\\u0442\\u043e\\u0440\\u0430\\u043d\\u0430\", \"object\": \"Star Burger \\u0410\\u0440\\u0431\\u0430\\u0442 - \\u0411\\u0435\\u043a\\u043e\\u043d\\u0430\\u0439\\u0437\\u0435\\u0440\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2025-10-16T20:19:28.014Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "1",
+    "object_repr": "Заказ #1 - Devman Devman",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043b\\u0435\\u0444\\u043e\\u043d\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2025-10-18T19:58:46.647Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "12",
+    "object_repr": "Заказ #12 - Devman Devman",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043b\\u0435\\u0444\\u043e\\u043d\", \"\\u041a\\u043e\\u043c\\u043c\\u0435\\u043d\\u0442\\u0430\\u0440\\u0438\\u0439 \\u043c\\u0435\\u043d\\u0435\\u0434\\u0436\\u0435\\u0440\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2025-10-18T19:59:09.188Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "52",
+    "object_repr": "Заказ #52 - Devman Devman",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043c\\u043c\\u0435\\u043d\\u0442\\u0430\\u0440\\u0438\\u0439\", \"\\u041a\\u043e\\u043c\\u043c\\u0435\\u043d\\u0442\\u0430\\u0440\\u0438\\u0439 \\u043c\\u0435\\u043d\\u0435\\u0434\\u0436\\u0435\\u0440\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2025-10-20T20:34:01.525Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "6",
+    "object_repr": "Заказ #6 - Devman Devman",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043b\\u0435\\u0444\\u043e\\u043d\", \"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\", \"\\u041f\\u043e\\u0437\\u0432\\u043e\\u043d\\u0438\\u043b\\u0438\", \"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043b\\u0435\\u043d\", \"\\u041a\\u043e\\u043c\\u043c\\u0435\\u043d\\u0442\\u0430\\u0440\\u0438\\u0439\", \"\\u041a\\u043e\\u043c\\u043c\\u0435\\u043d\\u0442\\u0430\\u0440\\u0438\\u0439 \\u043c\\u0435\\u043d\\u0435\\u0434\\u0436\\u0435\\u0440\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2025-10-20T21:00:21.218Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "52",
+    "object_repr": "Заказ #52 - Devman Devman",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043c\\u043c\\u0435\\u043d\\u0442\\u0430\\u0440\\u0438\\u0439\", \"\\u041a\\u043e\\u043c\\u043c\\u0435\\u043d\\u0442\\u0430\\u0440\\u0438\\u0439 \\u043c\\u0435\\u043d\\u0435\\u0434\\u0436\\u0435\\u0440\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2025-10-20T21:04:49.365Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "54",
+    "object_repr": "Заказ #54 - Devman Devman",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u043f\\u043e\\u0441\\u043e\\u0431 \\u043e\\u043f\\u043b\\u0430\\u0442\\u044b\", \"\\u041f\\u043e\\u0437\\u0432\\u043e\\u043d\\u0438\\u043b\\u0438\", \"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043b\\u0435\\u043d\"]}}, {\"changed\": {\"name\": \"\\u043f\\u043e\\u0437\\u0438\\u0446\\u0438\\u044f \\u0437\\u0430\\u043a\\u0430\\u0437\\u0430\", \"object\": \"\\u0422\\u0440\\u043e\\u0439\\u043d\\u043e\\u0439 \\u0412\\u043e\\u043f\\u043f\\u0435\\u0440 x3\", \"fields\": [\"\\u041a\\u043e\\u043b\\u0438\\u0447\\u0435\\u0441\\u0442\\u0432\\u043e\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2025-11-03T20:34:47.881Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "59",
+    "object_repr": "Заказ #59 - караман Красавчик",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\", \"\\u0421\\u043f\\u043e\\u0441\\u043e\\u0431 \\u043e\\u043f\\u043b\\u0430\\u0442\\u044b\", \"\\u041f\\u043e\\u0437\\u0432\\u043e\\u043d\\u0438\\u043b\\u0438\", \"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043b\\u0435\\u043d\", \"\\u041a\\u043e\\u043c\\u043c\\u0435\\u043d\\u0442\\u0430\\u0440\\u0438\\u0439\", \"\\u041a\\u043e\\u043c\\u043c\\u0435\\u043d\\u0442\\u0430\\u0440\\u0438\\u0439 \\u043c\\u0435\\u043d\\u0435\\u0434\\u0436\\u0435\\u0440\\u0430\"]}}, {\"changed\": {\"name\": \"\\u043f\\u043e\\u0437\\u0438\\u0446\\u0438\\u044f \\u0437\\u0430\\u043a\\u0430\\u0437\\u0430\", \"object\": \"\\u0422\\u0440\\u043e\\u0439\\u043d\\u043e\\u0439 \\u0412\\u043e\\u043f\\u043f\\u0435\\u0440 x3\", \"fields\": [\"\\u041a\\u043e\\u043b\\u0438\\u0447\\u0435\\u0441\\u0442\\u0432\\u043e\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2025-11-03T20:34:50.152Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "59",
+    "object_repr": "Заказ #59 - караман Красавчик",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2025-11-05T20:18:31.313Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "64",
+    "object_repr": "Заказ #64 - Devman Devman",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0420\\u0435\\u0441\\u0442\\u043e\\u0440\\u0430\\u043d \\u0434\\u043b\\u044f \\u043f\\u0440\\u0438\\u0433\\u043e\\u0442\\u043e\\u0432\\u043b\\u0435\\u043d\\u0438\\u044f\", \"\\u0421\\u043f\\u043e\\u0441\\u043e\\u0431 \\u043e\\u043f\\u043b\\u0430\\u0442\\u044b\", \"\\u041f\\u043e\\u0437\\u0432\\u043e\\u043d\\u0438\\u043b\\u0438\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2025-11-05T20:18:32.970Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "64",
+    "object_repr": "Заказ #64 - Devman Devman",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2025-11-06T20:20:07.819Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "71",
+    "object_repr": "Заказ #71 - караман Красавчик",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u043f\\u043e\\u0441\\u043e\\u0431 \\u043e\\u043f\\u043b\\u0430\\u0442\\u044b\", \"\\u041f\\u043e\\u0437\\u0432\\u043e\\u043d\\u0438\\u043b\\u0438\", \"\\u041a\\u043e\\u043c\\u043c\\u0435\\u043d\\u0442\\u0430\\u0440\\u0438\\u0439\", \"\\u041a\\u043e\\u043c\\u043c\\u0435\\u043d\\u0442\\u0430\\u0440\\u0438\\u0439 \\u043c\\u0435\\u043d\\u0435\\u0434\\u0436\\u0435\\u0440\\u0430\"]}}]"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add товар",
+    "content_type": 1,
+    "codename": "add_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change товар",
+    "content_type": 1,
+    "codename": "change_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete товар",
+    "content_type": 1,
+    "codename": "delete_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view товар",
+    "content_type": 1,
+    "codename": "view_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add ресторан",
+    "content_type": 2,
+    "codename": "add_restaurant"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change ресторан",
+    "content_type": 2,
+    "codename": "change_restaurant"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete ресторан",
+    "content_type": 2,
+    "codename": "delete_restaurant"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view ресторан",
+    "content_type": 2,
+    "codename": "view_restaurant"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add пункт меню ресторана",
+    "content_type": 3,
+    "codename": "add_restaurantmenuitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change пункт меню ресторана",
+    "content_type": 3,
+    "codename": "change_restaurantmenuitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete пункт меню ресторана",
+    "content_type": 3,
+    "codename": "delete_restaurantmenuitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view пункт меню ресторана",
+    "content_type": 3,
+    "codename": "view_restaurantmenuitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add категория",
+    "content_type": 4,
+    "codename": "add_productcategory"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change категория",
+    "content_type": 4,
+    "codename": "change_productcategory"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete категория",
+    "content_type": 4,
+    "codename": "delete_productcategory"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view категория",
+    "content_type": 4,
+    "codename": "view_productcategory"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 5,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 5,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 5,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 5,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 6,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 6,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 6,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 6,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 7,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 7,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 7,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 7,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 8,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 8,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 8,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 8,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 9,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 9,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 9,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 9,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 10,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 10,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 10,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 10,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add позиция заказа",
+    "content_type": 11,
+    "codename": "add_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change позиция заказа",
+    "content_type": 11,
+    "codename": "change_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete позиция заказа",
+    "content_type": 11,
+    "codename": "delete_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view позиция заказа",
+    "content_type": 11,
+    "codename": "view_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add заказ",
+    "content_type": 12,
+    "codename": "add_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change заказ",
+    "content_type": 12,
+    "codename": "change_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete заказ",
+    "content_type": 12,
+    "codename": "delete_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view заказ",
+    "content_type": 12,
+    "codename": "view_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 49,
+  "fields": {
+    "name": "Can add местоположение",
+    "content_type": 13,
+    "codename": "add_location"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 50,
+  "fields": {
+    "name": "Can change местоположение",
+    "content_type": 13,
+    "codename": "change_location"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 51,
+  "fields": {
+    "name": "Can delete местоположение",
+    "content_type": 13,
+    "codename": "delete_location"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 52,
+  "fields": {
+    "name": "Can view местоположение",
+    "content_type": 13,
+    "codename": "view_location"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$8YqvX31mwM3WksqCNC7Kit$77csIMa5Td5MlWBYd+bTkuxpWTNqCtr2FSoaXy1aZmw=",
+    "last_login": "2025-10-30T21:32:54.356Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "kapaman@mail.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-08-30T18:40:16.511Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "foodcartapp",
+    "model": "product"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "foodcartapp",
+    "model": "restaurant"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "foodcartapp",
+    "model": "restaurantmenuitem"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "foodcartapp",
+    "model": "productcategory"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "foodcartapp",
+    "model": "orderitem"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 12,
+  "fields": {
+    "app_label": "foodcartapp",
+    "model": "order"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 13,
+  "fields": {
+    "app_label": "locations",
+    "model": "location"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "3isl4kg6f30suavms8qug9uxdrguug6z",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQRP-FsyEtXWT16L3fQHZhkaqBpLQn47_bJj1oMqd5b-atPK1L9muT2U9RXVWvTr8dU3hK2UF8ULlXHWpZ5on1ruiDNj3WKK_b4f4dZGp5WwsSRAcMKfZkrCVAQDsM5M52CxMmx0HQkFyMdCFwgg4diIEkyFZ9vun-OEE:1uyaFe:mdTMk_wNDy-NE8tSZmtOQljOmO8C3bxlDEo0B9a1iXA",
+    "expire_date": "2025-09-30T18:18:02.792Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "5tdzqwwycdb0ve73fthb4q7f9613knr5",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQRP-FsyEtXWT16L3fQHZhkaqBpLQn47_bJj1oMqd5b-atPK1L9muT2U9RXVWvTr8dU3hK2UF8ULlXHWpZ5on1ruiDNj3WKK_b4f4dZGp5WwsSRAcMKfZkrCVAQDsM5M52CxMmx0HQkFyMdCFwgg4diIEkyFZ9vun-OEE:1usQVZ:QVlLRpuXYK9zE2WoYNh5wu_0RMSvqeqKChZLKDdsbMA",
+    "expire_date": "2025-09-13T18:41:01.355Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "9r9zgnddn22ey3lksswrny8o7wbj6ru3",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQRP-FsyEtXWT16L3fQHZhkaqBpLQn47_bJj1oMqd5b-atPK1L9muT2U9RXVWvTr8dU3hK2UF8ULlXHWpZ5on1ruiDNj3WKK_b4f4dZGp5WwsSRAcMKfZkrCVAQDsM5M52CxMmx0HQkFyMdCFwgg4diIEkyFZ9vun-OEE:1vEaGM:9MC8BHCbjkq8KPjf5pe9cUmwIrsZ-7PPzOsMvXfs2rU",
+    "expire_date": "2025-11-13T21:32:54.411Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "qy29v29hj0538k21gjl9fhw0ri9f0oss",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQRP-FsyEtXWT16L3fQHZhkaqBpLQn47_bJj1oMqd5b-atPK1L9muT2U9RXVWvTr8dU3hK2UF8ULlXHWpZ5on1ruiDNj3WKK_b4f4dZGp5WwsSRAcMKfZkrCVAQDsM5M52CxMmx0HQkFyMdCFwgg4diIEkyFZ9vun-OEE:1v9TZH:avUGwEqzYbYKaWDXb2zunQv7IqJM57Wkx3wvh6IQqpE",
+    "expire_date": "2025-10-30T19:23:19.147Z"
+  }
+}
+]
