@@ -15,6 +15,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env.bool('DEBUG', True)
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', ['127.0.0.1', 'localhost'])
+CSRF_TRUSTED_ORIGINS = [
+    'http://greefindsk56.ru',
+    'http://www.greefindsk56.ru',
+    'http://93.183.82.243',
+]
 YANDEX_GEOCODER_APIKEY = env('YANDEX_GEOCODER_APIKEY')
 ROLLBAR_ACCESS_TOKEN = env('ROLLBAR_ACCESS_TOKEN', '')
 
@@ -88,11 +93,22 @@ WSGI_APPLICATION = 'star_burger.wsgi.application'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:////{0}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
-    )
-}
+
+DATABASE_URL = env('DATABASE_URL', default=None)
+
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+    }
+    print(f"✅ Используем PostgreSQL: {DATABASE_URL.split('@')[1] if '@' in DATABASE_URL else DATABASE_URL}")
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+    print("⚠️  Используем SQLite (DATABASE_URL не найден в .env)"
 
 AUTH_PASSWORD_VALIDATORS = [
     {
