@@ -108,7 +108,7 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-    print("⚠️  Используем SQLite (DATABASE_URL не найден в .env)"
+    print("⚠️  Используем SQLite (DATABASE_URL не найден в .env)")
 
 AUTH_PASSWORD_VALIDATORS = [
     {
