@@ -22,7 +22,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 YANDEX_GEOCODER_APIKEY = env('YANDEX_GEOCODER_APIKEY', '')
 ROLLBAR_ACCESS_TOKEN = env('ROLLBAR_ACCESS_TOKEN', '')
-
+ENVIRONMENT = env('ENVIRONMENT', 'development')
 
 INSTALLED_APPS = [
     'foodcartapp.apps.FoodcartappConfig',
@@ -150,7 +150,7 @@ STATICFILES_DIRS = [
 
 ROLLBAR = {
     'access_token': ROLLBAR_ACCESS_TOKEN,
-    'environment': 'development' if DEBUG else 'production',
+    'environment': ENVIRONMENT,
     'branch': 'master',
     'root': BASE_DIR,
 }
@@ -158,7 +158,7 @@ ROLLBAR = {
 if ROLLBAR_ACCESS_TOKEN:  # ← Проверяем есть ли токен
     ROLLBAR = {
         'access_token': ROLLBAR_ACCESS_TOKEN,
-        'environment': 'development' if DEBUG else 'production',
+        'environment': ENVIRONMENT,
         'branch': 'master',
         'root': BASE_DIR,
     }
