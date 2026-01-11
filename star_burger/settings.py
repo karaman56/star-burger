@@ -20,7 +20,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://www.greefindsk56.ru',
     'http://93.183.82.243',
 ]
-YANDEX_GEOCODER_APIKEY = env('YANDEX_GEOCODER_APIKEY')
+YANDEX_GEOCODER_APIKEY = env('YANDEX_GEOCODER_APIKEY', '')
 ROLLBAR_ACCESS_TOKEN = env('ROLLBAR_ACCESS_TOKEN', '')
 
 
@@ -155,5 +155,14 @@ ROLLBAR = {
     'root': BASE_DIR,
 }
 
-if ROLLBAR['access_token']:
+if ROLLBAR_ACCESS_TOKEN:  # ← Проверяем есть ли токен
+    ROLLBAR = {
+        'access_token': ROLLBAR_ACCESS_TOKEN,
+        'environment': 'development' if DEBUG else 'production',
+        'branch': 'master',
+        'root': BASE_DIR,
+    }
     rollbar.init(**ROLLBAR)
+    print(f"✅ Rollbar подключен: {ROLLBAR['environment']}")
+else:
+    print("⚠️  Rollbar не подключен (нет ROLLBAR_ACCESS_TOKEN в .env)")
