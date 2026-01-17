@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'rest_framework',
     'debug_toolbar',
-    'rollbar',
 ]
 
 MIDDLEWARE = [
@@ -155,13 +154,7 @@ ROLLBAR = {
     'root': BASE_DIR,
 }
 
-if ROLLBAR_ACCESS_TOKEN:  # ← Проверяем есть ли токен
-    ROLLBAR = {
-        'access_token': ROLLBAR_ACCESS_TOKEN,
-        'environment': ENVIRONMENT,
-        'branch': 'master',
-        'root': BASE_DIR,
-    }
+if ROLLBAR['access_token']:
     rollbar.init(**ROLLBAR)
     print(f"✅ Rollbar подключен: {ROLLBAR['environment']}")
 else:
