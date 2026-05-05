@@ -297,6 +297,7 @@ ssh root@ваш-сервер "cd /root/star_burger && ./deploy.sh"
    ```bash
    ./deploy.sh
    ```
+сайт находиться будет по адресу ```http://85.209.9.34/```
 
 
 
