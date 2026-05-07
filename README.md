@@ -262,7 +262,7 @@ ssh root@ваш-сервер "cd /root/star_burger && ./deploy.sh"
 
 ## ✅ Проект развёрнут и работает
 
-**🌐 Рабочий сайт:** https://greefindsk56.ru
+**🌐 Рабочий сайт:** http://85.209.9.34/
 
 **🔧 SSH доступ для проверки:**
 - Сервер: `93.183.82.243`
@@ -280,12 +280,25 @@ ssh root@ваш-сервер "cd /root/star_burger && ./deploy.sh"
 
 **📁 Структура проекта на сервере:**
 
+
+
 ## Локальный запуск через Docker Compose
+
+1. Установите на сервере Docker и Docker Compose.
+2. Запустите проект:
+```bash
+docker compose build
+docker compose up -d
+docker compose exec backend python manage.py migrate
+docker compose exec backend python manage.py collectstatic --noinput
+```
+
+3. Сайт доступен по адресу http://localhost
+
+
 
 #### Деплой на сервер
 
-
-## Деплой на production сервер
 
 1. Установите на сервере Docker и Docker Compose.
 
@@ -297,8 +310,6 @@ ssh root@ваш-сервер "cd /root/star_burger && ./deploy.sh"
    ```bash
    ./deploy.sh
    ```
-сайт находиться будет по адресу ```http://85.209.9.34/```
-
 
 
 
